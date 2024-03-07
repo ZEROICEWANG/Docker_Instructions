@@ -1,4 +1,4 @@
-#<center>Docker使用说明</center>
+# <center>Docker使用说明</center>
 ## 1、Docker安装
 ### Docker安装参见[教程](./安装教程)
 ##### (1) 在安装过程中，安装NVIDIA Container Toolkit 可能会报错，可以打开教程中给出的官方安装指南链接，使用其中的命令进行安装。
@@ -44,3 +44,4 @@
 ![Alt text](imgs/1709783535935.jpg)
 这时先执行一下 `source activate`就可以了
 ![Alt text](imgs/1709783617431.jpg)
+## 4、Docker使用注意事项
