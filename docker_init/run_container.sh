@@ -4,7 +4,7 @@ new_user=syy
 new_pwd=314
 
 mkdir -p /var/docker_container/cont_space/"$new_user"_"$c"
-sudo docker run -it \
+sudo docker run -idt \
     -h srv3 \
     -p "$((15000+c)):22" \
     --gpus all \

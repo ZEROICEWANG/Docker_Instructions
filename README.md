@@ -15,13 +15,21 @@
 ![Alt text](imgs/1709782251994.jpg)
 
 ##### 只需要保留22端口的映射即可
-![Alt text](imgs/image.png)
+![Alt text](imgs/image.png)ls
 
 ##### run_container.sh -h参数表示宿主机名字，注意修改一下，不改直接用srv3也行,不会报错
 
-##### (3) Docker安装过程中需要的文件在文件夹[docker_init](./docker_init)中
+##### (3) <font color=red>Docker 容器会发生自动退出，是因为没有一个可以支撑docker 持久运行下去的命令</font>
+****
+![Alt text](imgs/1710121089018.jpg)
+****
+##### 解决方式：
+##### &emsp;&emsp;(a):新建容器的时候，将```-it```参数换为```-idt```，其中```-d```表示后台运行
+##### &emsp;&emsp;(b):已有的容器可以挂一个tmux补救一下
 
-##### (4) 如果docker创建的容器保存/var文件夹下，如下图所示
+##### (4) Docker安装过程中需要的文件在文件夹[docker_init](./docker_init)中
+
+##### (5) 如果docker创建的容器保存/var文件夹下，如下图所示
 ![Alt text](imgs/image-1.png)
 ##### 则需要给docker_container文件夹加上777权限，否则容器内创建文件需要sudo权限
 
