@@ -60,5 +60,16 @@
 
 ##### (3) 利用ssh连接容器时，conda是未激活的，直接执行`conda activate base`会提示如下错误
 ![Alt text](imgs/1709783535935.jpg)
+
 这时先执行一下 `source activate`就可以了
+
 ![Alt text](imgs/1709783617431.jpg)
+
+##### (4) 容器内系统时间不对，使用`date -R`查看，发现是时区错误，可通过如下方法修改
+###### 1、复制宿主机上的zoneinfo文件到容器下的/user/share/目录下
+`docker cp /usr/share/zoneinfo 容器名称:/usr/share/`
+###### 2、进入容器当中，创建软连接，修改时区
+`sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
+`sudo echo "Asia/Shanghai" > /etc/timezone`
+执行`sudo echo "Asia/Shanghai" > /etc/timezone`命令是，可能会出现`-bash: /etc/timezone: Permission denied`的问题，原因是`/etc`文件夹下没有timezone文件。
+建议在`~`路径下，先创建`timezone`文件，并写入`Asia/Shanghai`,再将该文件移动到`/etc/`下
