@@ -73,3 +73,13 @@
 `sudo echo "Asia/Shanghai" > /etc/timezone`
 执行`sudo echo "Asia/Shanghai" > /etc/timezone`命令是，可能会出现`-bash: /etc/timezone: Permission denied`的问题，原因是`/etc`文件夹下没有timezone文件。
 建议在`~`路径下，先创建`timezone`文件，并写入`Asia/Shanghai`,再将该文件移动到`/etc/`下
+
+##### (4) 容器启动失败，手动启动容器发现端口被占用
+执行 `ps -aux | grep -v grep | grep docker-proxy`
+发现一些端口被占用
+![Alt text](imgs/1715745347195.jpg)
+解决方法：
+依次执行
+- `sudo service docker stop`
+- `sudo rm /var/lib/docker/network/files/local-kv.db`
+- `sudo service docker start`
